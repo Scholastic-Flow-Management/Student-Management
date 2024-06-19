@@ -24,7 +24,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationController {
     @Autowired
-    @Qualifier("myAuthenticationManager")
     private  AuthenticationManager authenticationManager;
     @Autowired
     private  UserDetailService userDetailService;

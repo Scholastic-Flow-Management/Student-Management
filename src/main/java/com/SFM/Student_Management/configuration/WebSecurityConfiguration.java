@@ -13,7 +13,7 @@ public class WebSecurityConfiguration {
     public PasswordEncoder passwordEncoder(){
         return  new BCryptPasswordEncoder();
     }
-    @Bean("myAuthenticationManager")
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception{
         return configuration.getAuthenticationManager();
     }
