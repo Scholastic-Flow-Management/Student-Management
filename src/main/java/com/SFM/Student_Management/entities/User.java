@@ -1,57 +1,24 @@
 package com.SFM.Student_Management.entities;
 
-import com.SFM.Student_Management.enums.UserRole;
+import com.SFM.Student_Management.enums.Role;
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+@Builder
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "public")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String Name;
-    private UserRole role;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
+    @Column(name = "user_id")
+    private String userId;
+    private String password;
+    @Column(name = "phone_number")
+    private String phoneNumber;
     private String email;
-    private  String Password;
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
+    @Column(name = "is_active")
+    private boolean isActive;
 }

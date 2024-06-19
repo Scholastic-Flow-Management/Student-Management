@@ -7,15 +7,13 @@ import com.SFM.Student_Management.utils.JwtUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -43,5 +41,10 @@ public class AuthenticationController {
         final UserDetails userDetails = userDetailService.loadUserByUsername(authenticationRequest.getEmail());
             final String jwt = jwtUtil.generateToken(userDetails.getUsername());
             return new AuthenticationResponse(jwt);
+    }
+
+    @GetMapping("/{email}")
+    public UserDetails getUser(@PathVariable String email) {
+        return userDetailService.loadUserByUsername(email);
     }
 }
