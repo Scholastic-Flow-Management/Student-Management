@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ms-access-control
+  profiles:
+    active: local
+
