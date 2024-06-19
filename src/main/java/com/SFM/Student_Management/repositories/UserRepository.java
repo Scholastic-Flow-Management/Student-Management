@@ -15,6 +15,5 @@ public interface UserRepository extends JpaRepository<User,Long> {
          return null;
      }
 
-
     Optional<User> findFirstByEmail(String email);
 }

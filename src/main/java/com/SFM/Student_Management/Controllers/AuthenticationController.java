@@ -7,6 +7,7 @@ import com.SFM.Student_Management.utils.JwtUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -23,6 +24,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class AuthenticationController {
     @Autowired
+    @Qualifier("myAuthenticationManager")
     private  AuthenticationManager authenticationManager;
     @Autowired
     private  UserDetailService userDetailService;
