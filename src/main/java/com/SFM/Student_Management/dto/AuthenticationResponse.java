@@ -6,11 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class AuthenticationResponse {
-    private String jwtToken;
-
-    public AuthenticationResponse(String jwt) {
-        this.jwtToken = jwt;
-    }
-
-
+    private String accessToken;
+    private long expiredIn;
+    private String type;
 }
