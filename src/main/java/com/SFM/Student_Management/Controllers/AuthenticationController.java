@@ -41,6 +41,6 @@ public class AuthenticationController {
         }
         final UserDetails userDetails = userDetailService.loadUserByUsername(authenticationRequest.getEmail());
         final String jwt = jwtUtils.generateToken(userDetails.getUsername());
-        return AuthenticationResponse.builder().jwtToken(jwt).build();
+        return AuthenticationResponse.builder().accessToken(jwt).type("Bearer").expiredIn(0).build();
     }
 }
